@@ -1,0 +1,19 @@
+name: opencost
+serviceType: managed
+
+model:
+  image:
+    registry: quay.io
+    name: kubecost1/kubecost-cost-model
+    tag: latest
+    pullPolicy: IfNotPresent
+
+ui:
+  image:
+    registry: quay.io
+    name: kubecost1/opencost-ui
+    tag: latest
+    pullPolicy: IfNotPresent
+
+installation:
+  name: ""

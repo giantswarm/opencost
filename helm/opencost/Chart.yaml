@@ -1,0 +1,15 @@
+apiVersion: v2
+appVersion: 0.0.1
+name: opencost
+description: OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in Kubernetes environments.
+home: https://github.com/giantswarm/opencost
+
+# If you have an icon/logo, you should add it to https://github.com/giantswarm/web-assets
+# and set the final URL as a value here and uncomment.
+#icon: https://s.giantswarm.io/app-icons/example/1/light.svg
+
+sources:
+- https://github.com/opencost/opencost
+version: 1.102.0 
+annotations:
+  application.giantswarm.io/team: phoenix 
