@@ -29,7 +29,7 @@ spec:
               memory: "1G"
           env:
             - name: PROMETHEUS_SERVER_ENDPOINT
-              value: "http://prometheus-operated.{{ .Values.installation.name }}-prometheus.svc.cluster.local:9090/{{ .Values.installation.name }}/" 
+              value: "http://prometheus-operated.{{ .Values.installation.name }}-prometheus.svc.cluster.local:9090/{{ .Values.cluster.name }}/" 
           imagePullPolicy: IfNotPresent
         - image: "{{ .Values.ui.image.registry }}/{{ .Values.ui.image.name }}:{{ .Values.ui.image.tag }}"  
           name: ui

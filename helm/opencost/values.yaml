@@ -17,3 +17,6 @@ ui:
 
 installation:
   name: ""
+
+cluster:
+  name: ""
