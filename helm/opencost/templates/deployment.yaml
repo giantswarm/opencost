@@ -1,43 +1,43 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{ .Release.Name }}
-  namespace: {{ .Release.Namespace }}
-  labels:
-    app: opencost
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: opencost
-  template:
-    metadata:
-      labels:
-        app: opencost
-    spec:
-      restartPolicy: Always
-      serviceAccountName: opencost
-      containers:
-        - image: "{{ .Values.model.image.registry }}/{{ .Values.model.image.name }}:{{ .Values.model.image.tag }}" 
-          name: opencost
-          resources:
-            requests:
-              cpu: "10m"
-              memory: "55M"
-            limits:
-              cpu: "999m"
-              memory: "1G"
-          env:
-            - name: PROMETHEUS_SERVER_ENDPOINT
-              value: "http://prometheus-operated.{{ .Values.installation.name }}-prometheus.svc.cluster.local:9090/{{ .Values.cluster.name }}/" 
-          imagePullPolicy: IfNotPresent
-        - image: "{{ .Values.ui.image.registry }}/{{ .Values.ui.image.name }}:{{ .Values.ui.image.tag }}"  
-          name: ui
-          resources:
-            requests:
-              cpu: "10m"
-              memory: "55M"
-            limits:
-              cpu: "999m"
-              memory: "1G"
-          imagePullPolicy: IfNotPresent
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: {{ .Release.Name }}
+#   namespace: {{ .Release.Namespace }}
+#   labels:
+#     app: opencost
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: opencost
+#   template:
+#     metadata:
+#       labels:
+#         app: opencost
+#     spec:
+#       restartPolicy: Always
+#       serviceAccountName: opencost
+#       containers:
+#         - image: "{{ .Values.model.image.registry }}/{{ .Values.model.image.name }}:{{ .Values.model.image.tag }}" 
+#           name: opencost
+#           resources:
+#             requests:
+#               cpu: "500m"
+#               memory: "512M"
+#             limits:
+#               cpu: "999m"
+#               memory: "1G"
+#           env:
+#             - name: PROMETHEUS_SERVER_ENDPOINT
+#               value: "http://prometheus-operated.{{ .Values.installation.name }}-prometheus.svc.cluster.local:9090/{{ .Values.cluster.name }}/" 
+#           imagePullPolicy: IfNotPresent
+#         - image: "{{ .Values.ui.image.registry }}/{{ .Values.ui.image.name }}:{{ .Values.ui.image.tag }}"  
+#           name: ui
+#           resources:
+#             requests:
+#               cpu: "10m"
+#               memory: "55M"
+#             limits:
+#               cpu: "999m"
+#               memory: "1G"
+#           imagePullPolicy: IfNotPresent

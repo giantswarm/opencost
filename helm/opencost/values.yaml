@@ -1,21 +1,66 @@
 serviceType: managed
 
-model:
-  image:
-    registry: quay.io
-    name: kubecost1/kubecost-cost-model
-    tag: latest
-    pullPolicy: IfNotPresent
+# model:
+#   image:
+#     registry: quay.io
+#     name: kubecost1/kubecost-cost-model
+#     tag: latest
+#     pullPolicy: IfNotPresent
 
-ui:
-  image:
-    registry: quay.io
-    name: kubecost1/opencost-ui
-    tag: latest
-    pullPolicy: IfNotPresent
+# ui:
+#   image:
+#     registry: quay.io
+#     name: kubecost1/opencost-ui
+#     tag: latest
+#     pullPolicy: IfNotPresent
 
-installation:
-  name: ""
+# installation:
+#   name: ""
 
-cluster:
-  name: ""
+# cluster:
+#   name: ""
+
+opencost:
+  prometheus:
+    external:
+      enabled: true
+      url: "http://my-prometheus-server.prometheus.svc.cluster.local"
+    internal:
+      enabled: false
+  exporter:
+    persistence:
+      enabled: false
+      size: "20"
+      storageClass: "gp3"
+      accessMode: "ReadWriteOnce"
+  extraVolumes:
+  - name: cache-volume
+    emptyDir:
+      sizeLimit: 500Mi
+  extraVolumeMounts:
+  - mountPath: /var/www
+    name: cache-volume
+
+
+prometheus:
+  # Disable the prometheus push gateway
+  prometheus-pushgateway:
+    enabled: false
+
+  # Disable the prometheus alert manager
+  alertmanager:
+    enabled: false
+
+  # This is for OpenCost scraping
+  extraScrapeConfigs: |
+    - job_name: opencost
+      honor_labels: true
+      scrape_interval: 1m
+      scrape_timeout: 10s
+      metrics_path: /metrics
+      scheme: http
+      dns_sd_configs:
+      - names:
+        - opencost.opencost
+        type: 'A'
+        port: 9003  

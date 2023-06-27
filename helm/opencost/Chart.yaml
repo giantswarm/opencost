@@ -10,6 +10,14 @@ home: https://github.com/giantswarm/opencost
 
 sources:
 - https://github.com/opencost/opencost
-version: 1.102.0 
+version: 1.104.0
 annotations:
   application.giantswarm.io/team: phoenix 
+
+dependencies:
+  - name: prometheus
+    version: "22.6.*"
+    repository: https://prometheus-community.github.io/helm-charts
+  - name: opencost
+    version: "1.16.*"
+    repository: https://opencost.github.io/opencost-helm-chart
