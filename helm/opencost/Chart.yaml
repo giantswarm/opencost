@@ -8,9 +8,10 @@ home: https://github.com/giantswarm/opencost
 # and set the final URL as a value here and uncomment.
 #icon: https://s.giantswarm.io/app-icons/example/1/light.svg
 
-sources:
-- https://github.com/opencost/opencost
-version: 1.104.0
+# sources:
+# - https://github.com/opencost/opencost
+
+version: "[[ .Version ]]"
 annotations:
   application.giantswarm.io/team: phoenix 
 
