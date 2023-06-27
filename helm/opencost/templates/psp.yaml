@@ -1,4 +1,4 @@
-{{- if and (eq .Capabilities.KubeVersion.Major ("1" | atoi)) (lt .Capabilities.KubeVersion.Major ("25" | atoi)) -}}
+{{- if and (eq (int .Capabilities.KubeVersion.Major) 1) (le (int .Capabilities.KubeVersion.Minor) 24) }}
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
