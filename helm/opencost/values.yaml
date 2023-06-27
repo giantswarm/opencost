@@ -63,4 +63,4 @@ prometheus:
       - names:
         - opencost.opencost
         type: 'A'
-        port: 9003  
+        port: 9003
