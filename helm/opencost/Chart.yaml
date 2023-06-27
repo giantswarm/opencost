@@ -6,14 +6,14 @@ home: https://github.com/giantswarm/opencost
 
 # If you have an icon/logo, you should add it to https://github.com/giantswarm/web-assets
 # and set the final URL as a value here and uncomment.
-#icon: https://s.giantswarm.io/app-icons/example/1/light.svg
+# icon: https://s.giantswarm.io/app-icons/example/1/light.svg
 
 # sources:
 # - https://github.com/opencost/opencost
 
 version: "[[ .Version ]]"
 annotations:
-  application.giantswarm.io/team: phoenix 
+  application.giantswarm.io/team: phoenix
 
 dependencies:
   - name: prometheus
