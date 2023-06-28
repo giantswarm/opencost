@@ -5,6 +5,9 @@ metadata:
   labels: {{- include "opencost.labels" . | nindent 4 }}
   annotation:
   {{- include "giantswarm.irsa.annotation" . | nindent 4 }}
+  {{- with .Values.serviceAccount.annotations }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   {{- with .Values.opencost.opencost.serviceAccount.annotations }}
     {{- toYaml . | nindent 4 }}
   {{- end }}  
