@@ -47,21 +47,21 @@ prometheus:
       enabled: true
       size: 120Gi
       # storageClass: "gp3"
-  resources:
-    limits:
-      cpu: 4000m
-      memory: 8192Mi
-    requests:
-      cpu: 500m
-      memory: 1024Mi
-  verticalAutoscaler:
-    enabled: true
-  statefulSet:
-    ## If true, use a statefulset instead of a deployment for pod management.
-    ## This allows to scale replicas to more than 1 pod
-    ##
-    enabled: true
-  replicaCount: 3
+    resources:
+      limits:
+        cpu: 4000m
+        memory: 8192Mi
+      requests:
+        cpu: 500m
+        memory: 1024Mi
+    verticalAutoscaler:
+      enabled: true
+    statefulSet:
+      ## If true, use a statefulset instead of a deployment for pod management.
+      ## This allows to scale replicas to more than 1 pod
+      ##
+      enabled: true
+    replicaCount: 3
   service:
     statefulsetReplica:
       enabled: true
