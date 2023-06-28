@@ -36,3 +36,6 @@ giantswarm.io/service-type: {{ .Values.serviceType }}
 helm.sh/chart: {{ include "chart" . | quote }}
 {{- end -}}
 
+{{- define "giantswarm.irsa.annotation" -}}
+eks.amazonaws.com/role-arn: arn:aws:iam::{{ .Values.aws.accountID }}:role/{{ .Values.clusterID }}-OpenCost-Role
+{{- end -}}
