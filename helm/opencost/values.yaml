@@ -11,6 +11,9 @@ serviceType: managed
 # an opencost configuration object
 opencost:
   opencost:
+    serviceAccount:
+      # eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/eksctl-opencost
+      annotations: {}
     prometheus:
       external:
         enabled: false
