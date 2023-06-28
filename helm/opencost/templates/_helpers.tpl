@@ -36,6 +36,22 @@ giantswarm.io/service-type: {{ .Values.serviceType }}
 helm.sh/chart: {{ include "chart" . | quote }}
 {{- end -}}
 
+{{/*
+Common labels Opencost
+*/}}
+{{- define "opencost.labels" -}}
+helm.sh/chart: {{ include "opencost.chart" . }}
+{{ include "opencost.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/part-of: {{ template "opencost.name" . }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if .Values.commonLabels}}
+{{ toYaml .Values.commonLabels }}
+{{- end }}
+{{- end -}}
+
 {{- define "giantswarm.irsa.annotation" -}}
 eks.amazonaws.com/role-arn: arn:aws:iam::{{ .Values.aws.accountID }}:role/{{ .Values.clusterID }}-OpenCost-Role
 {{- end -}}

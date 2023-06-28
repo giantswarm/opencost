@@ -38,7 +38,6 @@ opencost:
     - mountPath: /var/www
       name: cache-volume
 
-
 prometheus:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
   server:
