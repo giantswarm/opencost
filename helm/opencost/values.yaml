@@ -1,10 +1,12 @@
 serviceType: managed
 
-# installation:
-#   name: ""
+# Defines the AWS account ID for the IRSA role
+aws:
+  accountID: ""
+  isChina: false
 
-# cluster:
-#   name: ""
+# Defines the cluster id/name
+clusterID: ""
 
 # Yeah...we need the double opencost indentation here
 # because the helm chart is also called open cost and has
