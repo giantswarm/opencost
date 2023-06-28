@@ -1,48 +1,70 @@
 serviceType: managed
 
-# model:
-#   image:
-#     registry: quay.io
-#     name: kubecost1/kubecost-cost-model
-#     tag: latest
-#     pullPolicy: IfNotPresent
-
-# ui:
-#   image:
-#     registry: quay.io
-#     name: kubecost1/opencost-ui
-#     tag: latest
-#     pullPolicy: IfNotPresent
-
 # installation:
 #   name: ""
 
 # cluster:
 #   name: ""
 
+# Yeah...we need the double opencost indentation here
+# because the helm chart is also called open cost and has
+# an opencost configuration object
 opencost:
-  prometheus:
-    external:
-      enabled: true
-      url: "http://my-prometheus-server.prometheus.svc.cluster.local"
-    internal:
-      enabled: false
-  exporter:
-    persistence:
-      enabled: false
-      size: "20"
-      storageClass: "gp3"
-      accessMode: "ReadWriteOnce"
-  extraVolumes:
-  - name: cache-volume
-    emptyDir:
-      sizeLimit: 500Mi
-  extraVolumeMounts:
-  - mountPath: /var/www
-    name: cache-volume
+  opencost:
+    prometheus:
+      external:
+        enabled: false
+        url: "http://opencost-prometheus-server.opencost.svc.cluster.local"
+      internal:
+        enabled: true
+        namespaceName: "opencost"
+        serviceName: "opencost-prometheus-server"
+        port: 80
+    exporter:
+      persistence:
+        enabled: false
+        size: "20"
+        storageClass: "gp3"
+        accessMode: "ReadWriteOnce"
+    extraVolumes:
+    - name: cache-volume
+      emptyDir:
+        sizeLimit: 500Mi
+    extraVolumeMounts:
+    - mountPath: /var/www
+      name: cache-volume
 
 
 prometheus:
+  # https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
+  server:
+    persistentVolume:
+      enabled: true
+      size: 120Gi
+      # storageClass: "gp3"
+  resources:
+    limits:
+      cpu: 4000m
+      memory: 8192Mi
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+  verticalAutoscaler:
+    enabled: true
+  statefulSet:
+    ## If true, use a statefulset instead of a deployment for pod management.
+    ## This allows to scale replicas to more than 1 pod
+    ##
+    enabled: true
+  replicaCount: 3
+  service:
+    statefulsetReplica:
+      enabled: true
+      replica: 0
+  ## Prometheus data retention period (default if not specified is 15 days)
+  ##
+  retention: "90d"
+
   # Disable the prometheus push gateway
   prometheus-pushgateway:
     enabled: false

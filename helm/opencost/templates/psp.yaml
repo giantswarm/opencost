@@ -52,7 +52,5 @@ subjects:
 - kind: ServiceAccount
   name: opencost
 - kind: ServiceAccount
-  name: opencost-prometheus-node-exporter
-- kind: ServiceAccount
   name: opencost-prometheus-server
 {{- end }}
