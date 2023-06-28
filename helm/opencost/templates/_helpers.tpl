@@ -53,5 +53,5 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{- define "giantswarm.irsa.annotation" -}}
-eks.amazonaws.com/role-arn: arn:{{- if eq .Values.aws.isChina -}}aws-cn{{- else -}}aws{{- end -}}:iam::{{ .Values.aws.accountID }}:role/{{ .Values.clusterID }}-OpenCost-Role
+eks.amazonaws.com/role-arn: arn:{{- if .Values.aws.isChina -}}aws-cn{{- else -}}aws{{- end -}}:iam::{{ .Values.aws.accountID }}:role/{{ .Values.clusterID }}-OpenCost-Role
 {{- end -}}
