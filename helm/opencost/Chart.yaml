@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: 0.1.0
+appVersion: 0.2.0
 name: opencost
 description: OpenCost is a vendor-neutral open source project for measuring and allocating infrastructure and container costs in Kubernetes environments.
 home: https://github.com/giantswarm/opencost
@@ -11,8 +11,8 @@ home: https://github.com/giantswarm/opencost
 # sources:
 # - https://github.com/opencost/opencost
 sources:
-  - "https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack"
-  - "https://github.com/opencost/opencost-helm-chart/tree/main/charts/opencost"
+  - "https://prometheus-community.github.io/helm-charts"
+  - "https://opencost.github.io/opencost-helm-chart"
 
 version: "[[ .Version ]]"
 annotations:
