@@ -12,11 +12,9 @@ clusterID: ""
 # because the helm chart is also called open cost and has
 # an opencost configuration object
 opencost:
+  serviceAccount:
+    create: false
   opencost:
-    serviceAccount:
-      create: false
-      # eks.amazonaws.com/role-arn: arn:aws:iam::123456789012:role/eksctl-opencost
-      annotations: {}
     prometheus:
       external:
         enabled: false

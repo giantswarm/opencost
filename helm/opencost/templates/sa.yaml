@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ .Values.opencost.opencost.serviceAccount.name | default "opencost" }}
+  name: {{ .Values.opencost.serviceAccount.name | default "opencost" }}
   labels: {{- include "opencost.labels" . | nindent 4 }}
   annotation:
   {{- include "giantswarm.irsa.annotation" . | nindent 4 }}
-  {{- with .Values.opencost.opencost.serviceAccount.annotations }}
+  {{- with .Values.opencost.serviceAccount.annotations }}
     {{- toYaml . | nindent 4 }}
   {{- end }}  
-automountServiceAccountToken: {{ .Values.opencost.opencost.serviceAccount.automountServiceAccountToken }}
+automountServiceAccountToken: {{ .Values.opencost.serviceAccount.automountServiceAccountToken }}

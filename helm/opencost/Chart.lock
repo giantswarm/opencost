@@ -1,0 +1,9 @@
+dependencies:
+- name: prometheus
+  repository: https://prometheus-community.github.io/helm-charts
+  version: 22.6.7
+- name: opencost
+  repository: https://opencost.github.io/opencost-helm-chart
+  version: 1.16.0
+digest: sha256:ab6e43d4746c20c9d0c0f6dd347dcb42ea823d9966660cf7ba0dac2c5ded3876
+generated: "2023-06-29T09:44:22.360019+02:00"
