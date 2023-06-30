@@ -15,6 +15,7 @@ opencost:
   serviceAccount:
     name: "opencost"
     create: false
+    annotations: {}
   opencost:
     prometheus:
       external:
