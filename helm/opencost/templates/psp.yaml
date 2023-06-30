@@ -5,6 +5,18 @@ metadata:
   name: opencost
 spec:
   allowPrivilegeEscalation: false
+  hostNetwork: true
+  hostPID: true
+  allowedHostPaths:
+    - pathPrefix: /proc
+      readOnly: true
+    - pathPrefix: /sys
+      readOnly: true
+    - pathPrefix: /root
+      readOnly: true
+  hostPorts:
+  - min: 9100
+    max: 9100
   fsGroup:
     ranges:
     - max: 65535
