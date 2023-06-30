@@ -49,10 +49,10 @@ prometheus:
     resources:
       limits:
         cpu: 4000m
-        memory: 8192Mi
+        memory: 64Gi
       requests:
         cpu: 500m
-        memory: 1024Mi
+        memory: 2Gi
     verticalAutoscaler:
       enabled: true
       updateMode: "Auto"
@@ -62,7 +62,7 @@ prometheus:
           mode: Auto
           minAllowed:
             cpu: 500m
-            memory: 1024mi
+            memory: 2Gi
     statefulSet:
       ## If true, use a statefulset instead of a deployment for pod management.
       ## This allows to scale replicas to more than 1 pod
