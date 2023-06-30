@@ -2,7 +2,7 @@
 
 # Opencost chart
 
-Currently in testing phase.
+Currently in beta phase.
 
 ## How to install
 
