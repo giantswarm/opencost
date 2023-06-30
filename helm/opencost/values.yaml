@@ -18,10 +18,10 @@ opencost:
   opencost:
     prometheus:
       external:
-        enabled: false
-        url: "http://opencost-prometheus-server.opencost.svc.cluster.local"
-      internal:
         enabled: true
+        url: "http://opencost-prometheus-server"
+      internal:
+        enabled: false
         namespaceName: "opencost"
         serviceName: "opencost-prometheus-server"
         port: 80
