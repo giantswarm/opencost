@@ -13,6 +13,7 @@ clusterID: ""
 # an opencost configuration object
 opencost:
   serviceAccount:
+    name: "opencost"
     create: false
   opencost:
     prometheus:

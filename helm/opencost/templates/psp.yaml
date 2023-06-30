@@ -50,7 +50,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: ServiceAccount
-  name: opencost
+  name: {{ .Values.opencost.serviceAccount.name | default "opencost" }}
 - kind: ServiceAccount
   name: opencost-prometheus-server
 {{- end }}
