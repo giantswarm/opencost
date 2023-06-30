@@ -10,9 +10,9 @@ home: https://github.com/giantswarm/opencost
 
 # sources:
 # - https://github.com/opencost/opencost
-sources:
-  - "https://prometheus-community.github.io/helm-charts"
-  - "https://opencost.github.io/opencost-helm-chart"
+# sources:
+#   - "https://prometheus-community.github.io/helm-charts"
+#   - "https://opencost.github.io/opencost-helm-chart"
 
 version: "[[ .Version ]]"
 annotations:
