@@ -30,13 +30,13 @@ opencost:
         size: "20"
         storageClass: "gp3"
         accessMode: "ReadWriteOnce"
-    extraVolumes:
-    - name: cache-volume
-      emptyDir:
-        sizeLimit: 500Mi
-    extraVolumeMounts:
-    - mountPath: /var/www
-      name: cache-volume
+  extraVolumes:
+  - name: cache-volume
+    emptyDir:
+      sizeLimit: 500Mi
+  extraVolumeMounts:
+  - mountPath: /var/www
+    name: cache-volume
 
 prometheus:
   # https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
