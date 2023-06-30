@@ -1,0 +1,19 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: opencost
+spec:
+  resourcePolicy:
+    containerPolicies:
+    - containerName: opencost
+      controlledValues: RequestsAndLimits
+      minAllowed:
+        cpu: 500m
+        memory: 512mi
+      mode: Auto
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: opencost
+  updatePolicy:
+    updateMode: Auto

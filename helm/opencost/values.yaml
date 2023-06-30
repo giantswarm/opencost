@@ -86,6 +86,24 @@ prometheus:
   alertmanager:
     enabled: false
 
+  prometheus-node-exporter:
+    verticalPodAutoscaler:
+      enabled: true
+      minAllowed:
+        cpu: 50m
+        memory: 50Mi
+      updatePolicy:
+        updateMode: Auto
+
+  kube-state-metrics:
+    verticalPodAutoscaler:
+      enabled: true
+      minAllowed:
+        cpu: 50m
+        memory: 750Mi
+      updatePolicy:
+        updateMode: Auto
+
   # This is for OpenCost scraping
   extraScrapeConfigs: |
     - job_name: opencost
