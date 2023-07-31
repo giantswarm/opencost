@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/opencost.svg?style=shield)](https://circleci.com/gh/giantswarm/opencost)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/giantswarm/opencost/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/giantswarm/opencost/tree/main)
 
 # Opencost chart
 
