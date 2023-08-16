@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   name: {{ .Values.opencost.serviceAccount.name | default "opencost" }}
   labels: {{- include "opencost.labels" . | nindent 4 }}
-  annotation:
+  annotations:
   {{- include "giantswarm.irsa.annotation" . | nindent 4 }}
   {{- with .Values.opencost.serviceAccount.annotations }}
     {{- toYaml . | nindent 4 }}
